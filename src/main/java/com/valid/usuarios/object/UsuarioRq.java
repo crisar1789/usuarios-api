@@ -1,0 +1,32 @@
+package com.valid.usuarios.object;
+
+public class UsuarioRq {
+
+	private String nombre;
+	private String apellido;
+	private boolean procesado;
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	public String getApellido() {
+		return apellido;
+	}
+	
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public boolean isProcesado() {
+		return procesado;
+	}
+
+	public void setProcesado(boolean procesado) {
+		this.procesado = procesado;
+	}
+}
