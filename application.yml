@@ -2,3 +2,6 @@ server:
   port : 9012
   servlet:
     context-path: /usuarios
+    
+spring:  thymeleaf:    cache: false
+    suffix: .html
