@@ -12,6 +12,7 @@ import com.valid.usuarios.object.ActualizarUsuariosRq;
 import com.valid.usuarios.object.Response;
 import com.valid.usuarios.object.UsuarioRq;
 import com.valid.usuarios.repository.UsuarioRepository;
+import com.valid.usuarios.util.ConstantsUtil;
 
 @Service
 public class UsuariosBusinessImpl implements UsuariosBusinessInt {
@@ -33,11 +34,11 @@ public class UsuariosBusinessImpl implements UsuariosBusinessInt {
 			// Se guarda el usuario
 			repository.save(usuario);
 			
-		return (Response<T>) new Response<UsuarioRq>(200, "Success", request);
+		return (Response<T>) new Response<UsuarioRq>(200, ConstantsUtil.SUCCESS_TRANSACTION, request);
 			
 		} catch(Exception e) {
 			log.error("Business error", e);
-			return (Response<T>) new Response<String>(500, "Error");
+			return (Response<T>) new Response<String>(500, ConstantsUtil.INTERNAL_SERVER_ERROR);
 		}
 	}
 
@@ -51,11 +52,11 @@ public class UsuariosBusinessImpl implements UsuariosBusinessInt {
 				repository.save(usuario);
 			}
 			
-			return new Response<String>(200, "Success", "Ok");
+			return new Response<String>(200, ConstantsUtil.SUCCESS_TRANSACTION, "OK");
 			
 		} catch(Exception e) {
 			log.error("Business error", e);
-			return new Response<String>(500, "Error");
+			return new Response<String>(500, ConstantsUtil.INTERNAL_SERVER_ERROR);
 		}
 	}
 
@@ -68,11 +69,11 @@ public class UsuariosBusinessImpl implements UsuariosBusinessInt {
 			
 			List<Usuario> usuarios = repository.getList().get();
 			
-			return (Response<T>) new Response<List<Usuario>>(200, "Success", usuarios);
+			return (Response<T>) new Response<List<Usuario>>(200, ConstantsUtil.SUCCESS_TRANSACTION, usuarios);
 			
 		} catch(Exception e) {
 			log.error("Business error", e);
-			return (Response<T>) new Response<String>(500, "Error");
+			return (Response<T>) new Response<String>(500, ConstantsUtil.INTERNAL_SERVER_ERROR);
 		}
 	}
 }

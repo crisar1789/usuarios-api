@@ -14,8 +14,13 @@ import com.valid.usuarios.object.Response;
 import com.valid.usuarios.object.UsuarioRq;
 import com.valid.usuarios.util.ValidatorUtil;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 @RequestMapping(value = "/usuarios")
 @RestController
+@Api(tags = "Usuarios Rest", produces = "application/json")
 public class UsuarioRest {
 
 	private final UsuariosBusinessInt usuariosBusinessInt;
@@ -26,8 +31,10 @@ public class UsuarioRest {
 	}
 	
 	@SuppressWarnings("unchecked")
+	@ApiOperation(value = "Operación para registrar un usuario", tags = "Usuarios Rest")
 	@RequestMapping(value = "/registrar", method = RequestMethod.POST)
-	public <T> Response<T> registrarUsuario(@RequestBody UsuarioRq request) {
+	public <T> Response<T> registrarUsuario(
+			@ApiParam(value = "Objeto con los datos del usuario") @RequestBody UsuarioRq request) {
 		try {
 			// Se validan los campos del request 
 			ValidatorUtil.validateRequest(request);
@@ -39,6 +46,7 @@ public class UsuarioRest {
 	}
 	
 	@SuppressWarnings("unchecked")
+	@ApiOperation(value = "Operación para consultar los usuarios registrados", tags = "Usuarios Rest")
 	@RequestMapping(value = "/consultar", method = RequestMethod.GET)
 	public <T> Response<T> consultar() {
 		try {
@@ -49,8 +57,10 @@ public class UsuarioRest {
 	}
 	
 	@SuppressWarnings("unchecked")
+	@ApiOperation(value = "Operación para actualizar los usuarios", tags = "Usuarios Rest")
 	@RequestMapping(value = "/actualizar", method = RequestMethod.POST)
-	public <T> Response<T> actualizar(@RequestBody ActualizarUsuariosRq request) {
+	public <T> Response<T> actualizar(
+			@ApiParam(value = "Objeto con la lista de usuarios") @RequestBody ActualizarUsuariosRq request) {
 		try {
 			return (Response<T>) this.usuariosBusinessInt.procesarUsuarios(request);
 		} catch (ConstraintViolationException e) {

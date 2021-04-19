@@ -1,13 +1,16 @@
 package com.valid.usuarios.object;
 
-//@ApiModel(description = "Objeto para respuesta de la Api")
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Objeto para respuesta de la Api")
 public class Response<T> {
 
-	//@ApiModelProperty(value = "Estado Http de la respuesta del servicio", required = true)
+	@ApiModelProperty(value = "Estado Http de la respuesta del servicio", required = true)
 	private int status;
-	//@ApiModelProperty(value = "Mensaje de la respuestad el servicio", required = true)
+	@ApiModelProperty(value = "Mensaje de la respuestad el servicio", required = true)
 	private String message;
-	//@ApiModelProperty(value = "Contenido con la informaciÃ³n de lo ocurrido en el proceso", required = true)
+	@ApiModelProperty(value = "Contenido con la información de lo ocurrido en el proceso", required = true)
 	private T body;
 	
 	public Response(int status, String message) {
