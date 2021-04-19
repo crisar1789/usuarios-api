@@ -8,25 +8,9 @@
 <div align="center">
 <h1>Usuarios</h1>
 <br/>
-<a href="/add">Registrar Usuario</a>
-<table border="1" cellpadding="10">
-<thead>
-<tr>
-<td>ID</td>
-<td>Nombre</td>
-<td>Apellido</td>
-<td>Procesado</td>
-</tr>
-</thead>
-<tbody>
-<tr th:each="user : ${usuarioList}">
-		<td th:text="${user.id}">id</td>
-		<td th:text="${user.nombre}">nombre</td>
-		<td th:text="${user.apellido}">apellido</td>
-		<td th:text="${user.procesado}">procesado</td>
-</tr>
-</tbody>
-</table>
+<a href="/usuarios/obtenerTodos">Consultar Usuarios</a>
+<br/>
+<a href="/usuarios/nuevo">Registrar Usuario</a>
 </div>
 </body>
 </html>

@@ -30,6 +30,13 @@ public class Usuario {
 		this.procesado = Boolean.FALSE;
 	}
 	
+	public Usuario(String nombre, String apellido, boolean procesado) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.procesado = procesado;
+	}
+	
 	public Integer getId() {
 		return id;
 	}

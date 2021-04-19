@@ -21,6 +21,10 @@ public class UsuariosBusinessImpl implements UsuariosBusinessInt {
 	@Autowired
     private UsuarioRepository repository;
 	
+	/**
+	 * Método encargado de reistrar un usuario en base de datos
+	 */
+	@SuppressWarnings("unchecked")
 	public <T> Response<T> registrarUsuario(UsuarioRq request) {
 		try {
 			
@@ -37,19 +41,15 @@ public class UsuariosBusinessImpl implements UsuariosBusinessInt {
 		}
 	}
 
+	/**
+	 * Método encargado de procesar todos los usuarios
+	 */
 	public Response<String> procesarUsuarios(ActualizarUsuariosRq request) {
 		try {
-			String ids = "";
 			for (Usuario usuario : request.getLista()) {
-				//ids += usuario.getId()+ ",";
-				//repository.updateUsuarios(usuario.getId());
 				usuario.setProcesado(Boolean.TRUE);
 				repository.save(usuario);
 			}
-			
-			/*ids = ids.substring(0, ids.length()-1);
-			
-			repository.updateUsuarios(ids);*/
 			
 			return new Response<String>(200, "Success", "Ok");
 			
@@ -59,6 +59,10 @@ public class UsuariosBusinessImpl implements UsuariosBusinessInt {
 		}
 	}
 
+	/**
+	 * Método encargado de consultar los usuariios en base de datos
+	 */
+	@SuppressWarnings("unchecked")
 	public <T> Response<T> consultarUsuarios() {
 		try {
 			
@@ -71,5 +75,4 @@ public class UsuariosBusinessImpl implements UsuariosBusinessInt {
 			return (Response<T>) new Response<String>(500, "Error");
 		}
 	}
-
 }
